@@ -1,20 +1,41 @@
 package com.smart.farm.RestControllers;
 
 public class UserForm {
-	private String username; 
-	private String password;
 	private String first_name;
 	private String last_name;
-	private String systemCode;
+	private String username; 
+	private String email;
+	private String password;
+	private String confirmedPassword;
+	private long tel ;
+	private boolean activated;
+	private String systemId;
 	
-	public String getSystemCode() {
-		return systemCode;
+	public long getTel() {
+		return tel;
 	}
-	public void setSystemCode(String systemCode) {
-		this.systemCode = systemCode;
+	public void setTel(long tel) {
+		this.tel = tel;
 	}
+	public boolean isActivated() {
+		return activated;
+	}
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+	/**
+	 * 
+	 */
+	
 	public String getFirst_name() {
 		return first_name;
+	}
+	public String getSystemId() {
+		return systemId;
+	}
+	public void setSystemId(String systemId) {
+		this.systemId = systemId;
 	}
 	public void setFirst_name(String first_name) {
 		this.first_name = first_name;
@@ -23,13 +44,7 @@ public class UserForm {
 		return last_name;
 	}
 	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-	private String confirmedPassword;
-	private String email;
-	/**
-	 * 
-	 */
+		this.last_name = last_name;}
 	public UserForm() {
 		super();
 	}

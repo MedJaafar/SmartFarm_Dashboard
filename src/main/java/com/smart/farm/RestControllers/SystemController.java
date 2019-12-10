@@ -15,6 +15,7 @@ public class SystemController {
 
 	private static final String ADD_NEW_SYSTEM_PATH = "/addsystem";
 	private static final String GET_CURRENT_CONNECTION_URL_PATH = "/getcurrenturl";
+	private static final String GET_CURRENT_SYSTEM_MONITR = "/getcurrentsystem";
 	
 	@Autowired 
 	private FarmSystemRepository farmRepository;
@@ -48,5 +49,11 @@ public class SystemController {
 	public SystemURL getCurrentSystemUrl(@PathVariable String systemID) {
 	SystemURL url= connectionService.getCurrentSystemUrl(systemID);
 	return url;	
+	}
+	
+	@GetMapping(GET_CURRENT_SYSTEM_MONITR+"/{systemID}")
+	public FarmSystem getCurrentSystem(@PathVariable String systemID) {
+	FarmSystem system = farmRepository.findBySystemID(systemID);
+	return system;	
 	}
 }

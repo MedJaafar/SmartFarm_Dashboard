@@ -19,7 +19,7 @@ public class NextSequenceService {
 	public static String SYSTEM_URL_SEC = "urlSequence";
 	public static String USER_SEC = "userSequence";
 	public static String FARMER_USER_SEQ = "farmerSequence";
-	
+	public static String Farm_STATUS_SEQ = "farmStatusSequence";
 	
     @Autowired private MongoOperations mongo;
 
