@@ -16,6 +16,7 @@ public class SystemController {
 	private static final String ADD_NEW_SYSTEM_PATH = "/addsystem";
 	private static final String GET_CURRENT_CONNECTION_URL_PATH = "/getcurrenturl";
 	private static final String GET_CURRENT_SYSTEM_MONITR = "/getcurrentsystem";
+	private static final String TOGGLE_AUTO_WATERING_PATH = "/toggleSystemWatering";
 	
 	@Autowired 
 	private FarmSystemRepository farmRepository;
@@ -47,13 +48,25 @@ public class SystemController {
 	// Load current active url by choosen systemID
 	@GetMapping(GET_CURRENT_CONNECTION_URL_PATH+"/{systemID}")
 	public SystemURL getCurrentSystemUrl(@PathVariable String systemID) {
-	SystemURL url= connectionService.getCurrentSystemUrl(systemID);
-	return url;	
+		SystemURL url= connectionService.getCurrentSystemUrl(systemID);
+		return url;
 	}
 	
 	@GetMapping(GET_CURRENT_SYSTEM_MONITR+"/{systemID}")
 	public FarmSystem getCurrentSystem(@PathVariable String systemID) {
-	FarmSystem system = farmRepository.findBySystemID(systemID);
-	return system;	
+		FarmSystem system = farmRepository.findBySystemID(systemID);
+		return system;	
+	}
+	
+	
+	// TOGGLE ENABLE AUTOWATERING
+	@GetMapping(TOGGLE_AUTO_WATERING_PATH+"/{systemID}")
+	public FarmSystem toggleSystemWatering(@PathVariable String systemID) {
+		FarmSystem system = farmRepository.findBySystemID(systemID);
+		if(system != null) {
+			system.setbEnableWatering(!system.isbEnableWatering());
+		return farmRepository.save(system);
+		}
+		return null;	
 	}
 }

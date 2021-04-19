@@ -48,7 +48,7 @@ public class AccountServiceImp implements AccountService {
 		appUser.setEmail(email);
 		appUser.setActivated(isActivated);
 		appuserrepository.save(appUser);  //This Method is Transactional but, only in the End of the method
-		addRoleToUser(username, "USER");
+		addRoleToUser(username, "ADMIN");
 		
 		/*  Create the MONGO DB User clone  */
 		farmUser.setId(Integer.toString(nextsequenceService.getNextSequence(NextSequenceService.FARMER_USER_SEQ)));

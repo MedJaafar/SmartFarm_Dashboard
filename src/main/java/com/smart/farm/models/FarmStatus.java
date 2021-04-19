@@ -16,11 +16,15 @@ public class FarmStatus {
 	private Date dateInsertion;
 	
 	// Enumeration
-	public enum InsertionType { ENUM_SCHEDULED(1),ENUM_USER(2),ENUM_AUTO_WATERING(3);
-	public final int value;
-	private InsertionType(int value) {
-	this.value = value;
-	    }
+	public enum InsertionType { 
+		ENUM_SCHEDULED(1),
+		ENUM_USER(2),
+		ENUM_AUTO_WATERING(3);
+		
+		public final int value;
+		private InsertionType(int value) {
+		this.value = value;
+		}
 	}
 	
 	@Field

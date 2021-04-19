@@ -30,7 +30,7 @@ public class DataStatusController {
 	@GetMapping(GET_SEARCH_STATUS_PATH)
 	public Page <FarmStatus> getStatusTableByPage(
 		@RequestParam(name="timeMode",defaultValue="0")String timeMode, 
-		@RequestParam(name="type",defaultValue="0") int type,
+		@RequestParam(name="type",defaultValue="0") int type, 
 		@RequestParam(name="page",defaultValue="0") int page,
 		@RequestParam(name="size",defaultValue="5") int size){
 		// Use Calendar to Add and subsruct Time -> Easy way to do it
@@ -49,12 +49,13 @@ public class DataStatusController {
 			break;
 		case MONTH_SEARCH_MODE :
 			calendar.add(Calendar.MONTH, -1);
+			size = 20;
 			break;
 		}
 		if(type == 0) {
-		return statusRepository.findBySystemIdAndDateInsertionAfter("1",calendar.getTime(), new PageRequest(page, size,Sort.by("dateInsertion").descending()));}
-		else {
-		return statusRepository.findBySystemIdAndTypeAndDateInsertionAfter("1", type, calendar.getTime(), new PageRequest(page, size,Sort.by("dateInsertion").descending()));
+			return statusRepository.findBySystemIdAndDateInsertionAfter("1",calendar.getTime(), new PageRequest(page, size,Sort.by("dateInsertion").descending()));
+		} else {
+			return statusRepository.findBySystemIdAndTypeAndDateInsertionAfter("1", type, calendar.getTime(), new PageRequest(page, size,Sort.by("dateInsertion").descending()));
 		}
 	}
  }
